@@ -1,6 +1,6 @@
 from sqlalchemy import insert
 from app.db.models.logs import SpaceType, EventType, Logs
-from app.db.models.authors import User, Blog, Post
+from app.db.models.authors import User, Blog, Post, Comment
 from app.db.database import get_db1, get_db2
 from app.db.database import engine_db1, engine_db2
 from app.db.models.logs import Base as BaseLogs
@@ -19,6 +19,19 @@ def add_space_types(db):
         {'id': 3, 'name': 'post'}
     ]
     db.execute(insert(SpaceType), space_types)
+
+
+def add_comments(db):
+    comments = [
+        {'id': 1, 'post_id': 1, 'user_id': 1, 'text': 'This is a comment from user1'},
+        {'id': 2, 'post_id': 1, 'user_id': 1, 'text': 'This is a second comment from user1'},
+        {'id': 3, 'post_id': 1, 'user_id': 2, 'text': 'This is a comment from user2'},
+        {'id': 4, 'post_id': 1, 'user_id': 2, 'text': 'This is a second comment from user2'},
+        {'id': 5, 'post_id': 2, 'user_id': 3, 'text': 'This is a comment from user3'},
+        {'id': 6, 'post_id': 2, 'user_id': 3, 'text': 'This is a second comment from user3'},
+        {'id': 7, 'post_id': 1, 'user_id': 3, 'text': 'This is a third comment from user3'}
+    ]
+    db.execute(insert(Comment), comments)
 
 
 def add_event_types(db):
@@ -73,12 +86,12 @@ def add_logs(db):
         {'id': 9, 'user_id': 1, 'space_type_id': 2, 'event_type_id': 4},
 
         # Комментарии к постам (space_type_id = 3, event_type_id = 5)
-        {'id': 10, 'user_id': 3, 'space_type_id': 3, 'event_type_id': 5},
-        {'id': 11, 'user_id': 3, 'space_type_id': 3, 'event_type_id': 5},
-        {'id': 12, 'user_id': 1, 'space_type_id': 3, 'event_type_id': 5},
+        {'id': 10, 'user_id': 1, 'space_type_id': 3, 'event_type_id': 5},
+        {'id': 11, 'user_id': 1, 'space_type_id': 3, 'event_type_id': 5},
+        {'id': 12, 'user_id': 2, 'space_type_id': 3, 'event_type_id': 5},
         {'id': 13, 'user_id': 2, 'space_type_id': 3, 'event_type_id': 5},
-        {'id': 14, 'user_id': 2, 'space_type_id': 3, 'event_type_id': 5},
-        {'id': 15, 'user_id': 1, 'space_type_id': 3, 'event_type_id': 5},
+        {'id': 14, 'user_id': 3, 'space_type_id': 3, 'event_type_id': 5},
+        {'id': 15, 'user_id': 3, 'space_type_id': 3, 'event_type_id': 5},
         {'id': 16, 'user_id': 3, 'space_type_id': 3, 'event_type_id': 5},
     ]
 
@@ -93,6 +106,7 @@ def load_fixtures():
         add_users(db1)
         add_blogs(db1)
         add_posts(db1)
+        add_comments(db1)
         db1.commit()
 
     with next(get_db2()) as db2:
