@@ -25,9 +25,9 @@ def add_event_types(db):
     event_types = [
         {'id': 1, 'name': 'login'},
         {'id': 2, 'name': 'logout'},
-        {'id': 3, 'name': 'comment'},
-        {'id': 4, 'name': 'create_post'},
-        {'id': 5, 'name': 'delete_post'}
+        {'id': 3, 'name': 'create_post'},
+        {'id': 4, 'name': 'delete_post'},
+        {'id': 5, 'name': 'comment'}
     ]
     db.execute(insert(EventType), event_types)
 
