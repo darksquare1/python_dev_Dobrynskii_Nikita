@@ -93,11 +93,13 @@ def load_fixtures():
         add_users(db1)
         add_blogs(db1)
         add_posts(db1)
+        db1.commit()
 
     with next(get_db2()) as db2:
         add_space_types(db2)
         add_event_types(db2)
         add_logs(db2)
+        db2.commit()
 
 
 if __name__ == '__main__':
