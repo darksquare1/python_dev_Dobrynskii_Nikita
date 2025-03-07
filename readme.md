@@ -4,8 +4,8 @@
 
 # Запуск
 ## Без докера
-Сервис доступен по следующему адресу: https://python-dev-dobrynskii-nikita.onrender.com, документация доступна на 
-https://python-dev-dobrynskii-nikita.onrender.com/docs, таблицы заполнены данными из app/db/fixtures.py, существующие 
+Сервис доступен по следующему адресу: https://darksquare1-python-dev-dobrynskii-nikita-9fff.twc1.net, документация доступна на 
+https://darksquare1-python-dev-dobrynskii-nikita-9fff.twc1.net/docs, таблицы заполнены данными из app/db/fixtures.py, существующие 
 юзеры: user1, user2, user3
 
 ## С докером
