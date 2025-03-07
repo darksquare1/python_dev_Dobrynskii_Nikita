@@ -25,4 +25,4 @@ https://darksquare1-python-dev-dobrynskii-nikita-9fff.twc1.net/docs, табли�
 
 ```docker exec logs_general python -m pytest```
 
-Документация будет доступна по адресу http://localhost:8000/
+Документация будет доступна по адресу http://localhost:8000/docs
